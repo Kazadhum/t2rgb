@@ -15,7 +15,7 @@
 
     <!-- velodyne -->
     <!-- <arg name="gpu" default="false" /> -->
-    <!-- velodyne -->
+    <!-- velodyne aa-->
 
     <!-- startup simulated world -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
