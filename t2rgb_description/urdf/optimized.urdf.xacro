@@ -22,7 +22,7 @@
     <selfCollide>false</selfCollide>
   </gazebo>
   <joint name="camera_right_rgb_joint" type="fixed">
-    <origin xyz="0.003325501544237003 -0.038267451617336704 -8.189375781680861e-05" rpy="-0.017064501193390046 -0.00926158798432519 0.005403842662984381"/>
+    <origin xyz="0.0030850964864938854 -0.03862854559784749 0.0012044787462071897" rpy="-0.019012957270409733 -0.007012470871355314 0.004470849738402716"/>
     <parent link="camera_right_link"/>
     <child link="camera_right_rgb_frame"/>
   </joint>
@@ -110,7 +110,7 @@
     <selfCollide>false</selfCollide>
   </gazebo>
   <joint name="camera_left_rgb_joint" type="fixed">
-    <origin xyz="0.0014481845414716181 -0.038350568055887185 -0.006598169141921513" rpy="-0.01706149127561613 -0.009205787608905572 0.005318361878431762"/>
+    <origin xyz="0.0016750785667217737 -0.03814237202281319 -0.006507470884875423" rpy="-0.018956233845256503 -0.007321111574370443 0.003858649945021942"/>
     <parent link="camera_left_link"/>
     <child link="camera_left_rgb_frame"/>
   </joint>
