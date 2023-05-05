@@ -46,14 +46,14 @@
     <!-- Throttle topics -->
     
     
-    <node pkg="topic_tools" type="throttle" name="throttler_right_camera"
-          args="messages /camera_right/rgb/image_raw/compressed_to_throttle 5 /camera_right/rgb/image_raw/compressed"/>
+    <!-- <node pkg="topic_tools" type="throttle" name="throttler_right_camera" -->
+          <!-- args="messages /camera_right/rgb/image_raw/compressed_to_throttle 5 /camera_right/rgb/image_raw/compressed"/> -->
     
     
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     
-    <node pkg="topic_tools" type="throttle" name="throttler_left_camera"
-          args="messages /camera_left/rgb/image_raw/compressed_to_throttle 5 /camera_left/rgb/image_raw/compressed"/>
+    <!-- <node pkg="topic_tools" type="throttle" name="throttler_left_camera" -->
+          <!-- args="messages /camera_left/rgb/image_raw/compressed_to_throttle 5 /camera_left/rgb/image_raw/compressed"/> -->
     
     
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -65,23 +65,23 @@
     <!-- Load robot description and tf generators -->
     <param name="robot_description" command="$(find xacro)/xacro $(arg description_file)"/>
 
-    <group unless="$(arg use_tfs)">
+    <!-- <group unless="$(arg use_tfs)">
         <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
-    </group>
+    </group> -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <!-- Playback the bag file -->
     <param name="/use_sim_time" value="true"/>
 
-    <group if="$(arg use_tfs)"> <!--Play bag file using tfs, ignore joint states -->
+    <!-- <group if="$(arg use_tfs)">
         <node pkg="rosbag" type="play" name="rosbag_play" output="screen"
-              args=" $(arg bag_file) --clock -r $(arg bag_rate) -l -s $(arg bag_start) -d 2 /joint_states:=/joint_states_null /camera_right/rgb/image_raw/compressed:=/camera_right/rgb/image_raw/compressed_to_throttle /camera_left/rgb/image_raw/compressed:=/camera_left/rgb/image_raw/compressed_to_throttle"/>
+              args=" $(arg bag_file) -clock -r $(arg bag_rate) -l -s $(arg bag_start) -d 2 /joint_states:=/joint_states_null /camera_right/rgb/image_raw/compressed:=/camera_right/rgb/image_raw/compressed_to_throttle /camera_left/rgb/image_raw/compressed:=/camera_left/rgb/image_raw/compressed_to_throttle"/>
     </group>
-    <group unless="$(arg use_tfs)"> <!--Play bag file ignoring tfs-->
+    <group unless="$(arg use_tfs)"> 
         <node pkg="rosbag" type="play" name="rosbag_play" output="screen"
-              args=" $(arg bag_file) --clock -r $(arg bag_rate) -l -s $(arg bag_start) -d 2 /tf:=/tf_dev_null /tf_static:=/tf_static_dev_null /camera_right/rgb/image_raw/compressed:=/camera_right/rgb/image_raw/compressed_to_throttle /camera_left/rgb/image_raw/compressed:=/camera_left/rgb/image_raw/compressed_to_throttle"/>
-    </group>
+              args=" $(arg bag_file) -clock -r $(arg bag_rate) -l -s $(arg bag_start) -d 2 /tf:=/tf_dev_null /tf_static:=/tf_static_dev_null /camera_right/rgb/image_raw/compressed:=/camera_right/rgb/image_raw/compressed_to_throttle /camera_left/rgb/image_raw/compressed:=/camera_left/rgb/image_raw/compressed_to_throttle"/>
+    </group> -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     
