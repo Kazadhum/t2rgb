@@ -19,7 +19,12 @@ from interactive_markers.interactive_marker_server import *
 from interactive_markers.menu_handler import *
 from visualization_msgs.msg import *
 from atom_core.ros_utils import filterLaunchArguments
+from atom_calibration.collect.data_collector_and_labeler import DataCollectorAndLabeler
+import atom_msgs.srv
+
 import time
+
+# local packages
 
 from gazebo_msgs.srv import SetModelState, GetModelState, GetModelStateRequest, SetModelStateRequest
 from tf2_ros import TransformBroadcaster
@@ -30,8 +35,6 @@ current_pose.orientation.w = 1
 rospy.init_node("interactive_pattern")
 set_state_service = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
 pub = rospy.Publisher('~pattern', MarkerArray, queue_size=0, latch=True)
-
-# local packages
 
 
 
@@ -294,7 +297,7 @@ if __name__ == "__main__":
     # Get current charuco gazebo model pose at set the marker's pose accordingly
     rospy.wait_for_service('/gazebo/get_model_state')
     get_model_state_service = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
-    pose_gazebo = get_model_state_service(model_name, 'world')
+    pose_gazebo = get_model_state_service(model_name, 'world')  
 
     pub = rospy.Publisher('/interactive_pattern/feedback', InteractiveMarkerFeedback, queue_size=10)
 
@@ -342,6 +345,16 @@ if __name__ == "__main__":
 
         feedback.header.stamp = rospy.Time.now()
         pub.publish(feedback)
+
+        time.sleep(5)
+
+        # Save collection service all
+        print('pre wait_for_service') #DEBUG
+        rospy.wait_for_service('/collect_data/save_collection')
+        print('post wait_for_service') #DEBUG
+        save_collection_service = rospy.ServiceProxy('/collect_data/save_collection', atom_msgs.srv.SaveCollection, DataCollectorAndLabeler.callbackSaveCollection)
+        print('service proxy created!') #DEBUG
+        collection = save_collection_service()
 
         time.sleep(5)
 
