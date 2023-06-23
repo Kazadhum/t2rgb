@@ -289,7 +289,7 @@ def menuFeedback_save_pose(feedback):
 
 def menuFeedback_save_movement_sequence(feedback):
     with open(args['output_path'] + 'movement_sequence.json', 'w') as movement_sequence_file:
-        movement_sequence_file.write(json.dumps(movement_sequence))
+        movement_sequence_file.write(json.dumps(movement_sequence, indent=2, sort_keys=True))
 
 
 
