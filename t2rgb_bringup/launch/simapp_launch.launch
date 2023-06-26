@@ -44,6 +44,6 @@
         -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)
         -param robot_description" />
 
-    <node name="pattern_motion" pkg="t2rgb_bringup" args="-msf $(arg motion_sequence_file)" />
+    <node name="pattern_motion" pkg="t2rgb_bringup" type="pattern_motion" args="-msf $(arg motion_sequence_file)" />
 
 </launch>
