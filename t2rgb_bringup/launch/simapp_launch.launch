@@ -4,7 +4,7 @@
 
 <launch>
 
-    <!-- <arg name="motion_sequence_file" /> -->
+    <arg name="motion_sequence_file" />
     <arg name="sim" default="true" /> 
     <arg name="gui" default="true" doc="Starts gazebo gui" />
     <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
