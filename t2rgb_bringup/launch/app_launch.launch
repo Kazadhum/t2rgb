@@ -75,7 +75,7 @@
 
     <param name="robot_description" command="$(find xacro)/xacro --inorder $(find t2rgb_description)/urdf/t2rgb.urdf.xacro" />
 
-
+		
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <!-- Call play bag launch file -->
     <include file="$(find t2rgb_calibration)/launch/playbag.launch">
